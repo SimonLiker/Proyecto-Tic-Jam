@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class playerMovementFix : MonoBehaviour
 {
+    
     float speed = 2f;
     // Start is called before the first frame update
     void Start()
