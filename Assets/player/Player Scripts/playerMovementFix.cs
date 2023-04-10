@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMovementFix : MonoBehaviour
 {
     
-    float speed = 2f;
+    float speed = 8f;
     // Start is called before the first frame update
     void Start()
     {

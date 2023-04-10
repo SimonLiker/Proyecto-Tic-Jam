@@ -8,9 +8,17 @@ public class enemy1Script : MonoBehaviour
 
     Vector3 playerPos;
 
-    float speed = 30f;
+    float speed = 75f;
 
     int counter = 1;
+
+    float range = 40f;
+
+    Vector3 rangeDetector;
+
+    float ratio = 0;
+
+    int ratioInt;
 
     // Start is called before the first frame update
     void Start()
@@ -22,24 +30,29 @@ public class enemy1Script : MonoBehaviour
     void Update()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        Debug.Log(playerPos);
+        rangeDetector = (transform.position - playerPos);
+        ratioInt = Mathf.RoundToInt(ratio);
 
-        RaycastHit2D playerDetection = Physics2D.Raycast(gameObject.transform.position, new Vector3(Mathf.Cos(gameObject.transform.rotation.x), Mathf.Sin(gameObject.transform.rotation.y)), 5f);
-        Debug.DrawRay(gameObject.transform.position, new Vector3(Mathf.Cos(gameObject.transform.rotation.x), Mathf.Sin(gameObject.transform.rotation.y))*5f, Color.red);
-
-        if (playerDetection.collider.tag == "Player")
+        if (rangeDetector.magnitude < range)
         {
-            Debug.Log("Hola");
-            while (counter > 0)
+         if (ratioInt % 2 == 0)
             {
-                var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
-                instance.GetComponent<Rigidbody2D>().AddForce((playerPos - transform.position) * speed);
-                counter--;
+                while (counter > 0)
+                {
+                    var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
+                    instance.GetComponent<Rigidbody2D>().AddForce((playerPos - transform.position) * speed);
+                    counter--;
+                }
             }
+            else
+            {
+                counter = 1;
+            }
+            ratio += (Time.deltaTime * 1.4f);
         }
         else
         {
-            counter = 1;
+            ratio = 0;
         }
     }
 }
