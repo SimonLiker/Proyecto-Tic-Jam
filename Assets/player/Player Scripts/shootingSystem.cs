@@ -5,10 +5,12 @@ using UnityEngine;
 public class shootingSystem : MonoBehaviour
 {
     public GameObject bullet;
-    
-    Vector2 mousePos;
 
     int counter = 1;
+
+    float speed = 150f;
+
+    Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +20,16 @@ public class shootingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray bulletTrajectory;
 
         if (Input.GetMouseButton(0))
         {
             while (counter == 1)
             {
-                mousePos = Input.mousePosition;
-                Instantiate(bullet, transform.position, Quaternion.identity);
-                bulletTrajectory = new Ray(transform.position, mousePos);
+                mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+                var instance = Instantiate(bullet, transform.position, Quaternion.identity);
+                instance.GetComponent<Rigidbody2D>().AddForce((mousePos - transform.position) * speed);
+                Debug.Log(mousePos.x);
+                Debug.Log(mousePos.y);
                 counter--;
             }
 
@@ -35,6 +38,5 @@ public class shootingSystem : MonoBehaviour
         {
             counter = 1;
         }
-        bullet.transform.Translate(3f, 2f, 0f);
     }
 }
