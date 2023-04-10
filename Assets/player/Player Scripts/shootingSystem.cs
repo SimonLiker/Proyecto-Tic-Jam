@@ -10,6 +10,8 @@ public class shootingSystem : MonoBehaviour
 
     float speed = 150f;
 
+    public int life = 3;
+
     Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
