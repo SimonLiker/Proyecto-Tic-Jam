@@ -10,6 +10,10 @@ public class shootingSystem : MonoBehaviour
 
     float speed = 150f;
 
+    public int life = 3;
+
+    public bool isShooted = false;
+
     Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +24,20 @@ public class shootingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Si es disparado
 
+        if (isShooted)
+        {
+            StartCoroutine(colorChange());
+        }
+
+        //muerte
+        if (life == 0)
+        {
+            Destroy(gameObject);
+        }
+
+        //hacer que dispare hacia la posición del mouse
         if (Input.GetMouseButton(0))
         {
             while (counter == 1)
@@ -37,6 +54,15 @@ public class shootingSystem : MonoBehaviour
         else
         {
             counter = 1;
+        }
+
+        IEnumerator colorChange()
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+
+            yield return new WaitForSeconds(.2f);
+
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
     }
 }
