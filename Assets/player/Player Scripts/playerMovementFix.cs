@@ -51,7 +51,7 @@ public class playerMovementFix : MonoBehaviour
     IEnumerator timeSlower()
     {
         Time.timeScale = 0.5f;
-        speed = 4f;
+        speed = 16f;
         yield return new WaitForSeconds(5f);
         Time.timeScale = 1f;
         speed = 2f;

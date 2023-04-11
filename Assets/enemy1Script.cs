@@ -20,6 +20,8 @@ public class enemy1Script : MonoBehaviour
 
     int ratioInt;
 
+    public int enemyLife = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,16 @@ public class enemy1Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Matar al enemigo
+
+        if (enemyLife == 0)
+        {
+            Destroy(gameObject);
+        }
+
+        //Hacer que dispare
+
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         rangeDetector = (transform.position - playerPos);
         ratioInt = Mathf.RoundToInt(ratio);
