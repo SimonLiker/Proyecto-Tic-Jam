@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 609771028}
   - component: {fileID: 609771027}
   - component: {fileID: 609771026}
+  - component: {fileID: 609771031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -517,6 +518,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609771031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609771025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afdde75f91b9ca47a96c8f182426c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5733748732491537878, guid: 09ba63c86bafb6f4aa292e6d21933687, type: 3}
+  life: 3
+  isShooted: 0
 --- !u!1 &1047614128
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,9 +803,10 @@ GameObject:
   - component: {fileID: 1475794761}
   - component: {fileID: 1475794765}
   - component: {fileID: 1475794766}
+  - component: {fileID: 1475794767}
   m_Layer: 6
   m_Name: enemigoBasico
-  m_TagString: Untagged
+  m_TagString: basicEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -944,6 +961,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1475794767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475794759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797c710d4a7173141bb145fc9137fa3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBullet: {fileID: 6715524055018144829, guid: 6694c1a148b05fe41b325d325cbb1c1b, type: 3}
+  enemyLife: 1
 --- !u!1 &1605679968
 GameObject:
   m_ObjectHideFlags: 0
