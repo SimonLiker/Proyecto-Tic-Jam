@@ -45,7 +45,7 @@ public class enemySpawner : MonoBehaviour
             counter = cantToSpawn; ;
         }
 
-        if (timeInt % 15 == 0)
+        if (timeInt % 15 == 0 && timeInt > 0)
         {
             while (counter2 > 0)
             {

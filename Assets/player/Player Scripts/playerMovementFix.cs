@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class playerMovementFix : MonoBehaviour
 {
-    
+
+    shootingSystem shootingShortcut;
+
     float speed = 8f;
     // Start is called before the first frame update
     void Start()
     {
-
+        shootingShortcut = FindObjectOfType<shootingSystem>();
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class playerMovementFix : MonoBehaviour
 
         //Slowing time down
 
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0)
         {
             StartCoroutine(timeSlower());
         }

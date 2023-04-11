@@ -35,6 +35,7 @@ public class shootingSystem : MonoBehaviour
         if (life == 0)
         {
             Destroy(gameObject);
+            Time.timeScale = 0f;
         }
 
         //hacer que dispare hacia la posición del mouse
