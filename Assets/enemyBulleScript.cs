@@ -22,9 +22,14 @@ public class enemyBulleScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("")
+            playerShortcut.isShooted = true;
+            Debug.Log("jugador impactado");
             playerShortcut.life--;
             Destroy(gameObject);
+        }
+        else
+        {
+            playerShortcut.isShooted = false;
         }
     }
 }
