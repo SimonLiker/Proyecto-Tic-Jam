@@ -19,8 +19,9 @@ public class bulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "basicEnemy")
+        if (collision.gameObject.tag == "basicEnemy" || collision.gameObject.tag == "enemigoMasFuerte")
         {
+            Debug.Log("Enemigo impactado");
             basicEnemyShortcut.enemyLife--;
             Destroy(gameObject);
         }

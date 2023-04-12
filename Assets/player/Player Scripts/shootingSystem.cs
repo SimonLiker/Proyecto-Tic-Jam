@@ -32,7 +32,7 @@ public class shootingSystem : MonoBehaviour
         }
 
         //muerte
-        if (life == 0)
+        if (life <= 0)
         {
             Destroy(gameObject);
             Time.timeScale = 0f;

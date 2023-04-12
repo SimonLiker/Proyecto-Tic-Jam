@@ -34,7 +34,7 @@ public class enemy1Script : MonoBehaviour
 
         //Matar al enemigo
 
-        if (enemyLife == 0)
+        if (enemyLife <= 0)
         {
             Destroy(gameObject);
         }

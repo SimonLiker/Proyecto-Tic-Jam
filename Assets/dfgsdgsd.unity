@@ -784,6 +784,7 @@ MonoBehaviour:
   - {fileID: 2072952856}
   - {fileID: 1421064181}
   basicEnemy: {fileID: 7548198528507191376, guid: c2f5284875f64d946a1abfad3b9fa851, type: 3}
+  strongerEnemy: {fileID: 7193775769501105452, guid: e2142b77f4a5eb045a6b25274cda662b, type: 3}
 --- !u!4 &1003224205
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,6 +1199,7 @@ GameObject:
   - component: {fileID: 1676704913}
   - component: {fileID: 1676704912}
   - component: {fileID: 1676704911}
+  - component: {fileID: 1676704914}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1240,7 +1242,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1271,6 +1273,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676704914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676704910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a15e39ca6885714fb5eb23f56936ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowSpeed: 2
+  yOffset: 1
+  target: {fileID: 609771030}
 --- !u!1 &2042426940
 GameObject:
   m_ObjectHideFlags: 0
