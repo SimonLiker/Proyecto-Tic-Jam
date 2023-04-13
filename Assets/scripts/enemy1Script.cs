@@ -8,7 +8,7 @@ public class enemy1Script : MonoBehaviour
 
     Vector3 playerPos;
 
-    float speed = 75f;
+    float speed = 10f;
 
     int counter = 1;
 
@@ -65,7 +65,7 @@ public class enemy1Script : MonoBehaviour
                 while (counter > 0)
                 {
                     var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
-                    instance.GetComponent<Rigidbody2D>().AddForce((playerPos - transform.position) * speed);
+                    instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
                     counter--;
                 }
             }

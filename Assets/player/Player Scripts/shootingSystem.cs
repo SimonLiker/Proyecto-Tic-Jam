@@ -8,7 +8,7 @@ public class shootingSystem : MonoBehaviour
 
     int counter = 1;
 
-    float speed = 1300f;
+    float speed = 10f;
 
     public int life = 3;
 
@@ -46,7 +46,7 @@ public class shootingSystem : MonoBehaviour
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                 var instance = Instantiate(bullet, transform.position, Quaternion.identity);
-                instance.GetComponent<Rigidbody2D>().AddForce((mousePos - transform.position).normalized * speed);
+                instance.GetComponent<Rigidbody2D>().velocity = new Vector2 ((mousePos.x - transform.position.x) * speed, (mousePos.y - transform.position.y)* speed).normalized * speed;
                 Debug.Log(mousePos.x);
                 Debug.Log(mousePos.y);
                 counter--;

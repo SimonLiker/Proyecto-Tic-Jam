@@ -66,7 +66,7 @@ public class enemy2Script : MonoBehaviour
                 while (counter > 0)
                 {
                     var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
-                    instance.GetComponent<Rigidbody2D>().AddForce((playerPos - transform.position) * speed);
+                    instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
                     counter--;
                 }
             }
