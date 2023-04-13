@@ -26,7 +26,6 @@ public class bulletScript : MonoBehaviour
         if (collision.gameObject.tag == "basicEnemy")
         {
             Debug.Log("Enemigo impactado");
-            enemyShortcut1.enemyLife--;
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "enemigoMasFuerte")

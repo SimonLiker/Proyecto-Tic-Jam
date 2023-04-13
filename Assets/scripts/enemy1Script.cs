@@ -24,7 +24,7 @@ public class enemy1Script : MonoBehaviour
 
     public GameObject[] basicEnemy;
 
-    public bool isShooted = false;
+    bool isShooted = false;
 
 
     // Start is called before the first frame update
@@ -43,7 +43,7 @@ public class enemy1Script : MonoBehaviour
         { 
             if (basicEnemy[i].GetComponent<enemy1Script>().isShooted)
             {
-                basicEnemy[i].GetComponent<enemy1Script>().enemyLife --;
+                basicEnemy[i].GetComponent<enemy1Script>().enemyLife--;
                 basicEnemy[i].GetComponent<enemy1Script>().isShooted = false;
             }
             if (basicEnemy[i].GetComponent<enemy1Script>().enemyLife <= 0)
