@@ -8,13 +8,14 @@ public class shootingSystem : MonoBehaviour
 
     int counter = 1;
 
-    float speed = 150f;
+    float speed = 1300f;
 
     public int life = 3;
 
     public bool isShooted = false;
 
     Vector3 mousePos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,7 @@ public class shootingSystem : MonoBehaviour
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                 var instance = Instantiate(bullet, transform.position, Quaternion.identity);
-                instance.GetComponent<Rigidbody2D>().AddForce((mousePos - transform.position) * speed);
+                instance.GetComponent<Rigidbody2D>().AddForce((mousePos - transform.position).normalized * speed);
                 Debug.Log(mousePos.x);
                 Debug.Log(mousePos.y);
                 counter--;

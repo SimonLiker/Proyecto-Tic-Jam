@@ -23,6 +23,7 @@ public class enemySpawner : MonoBehaviour
     int counter3 = 1;
 
     int randSpawnPoint2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class enemySpawner : MonoBehaviour
             {
                 randSpawnPoint = Random.Range(0, spawnPoints.Length);
 
-                Instantiate(basicEnemy, spawnPoints[randSpawnPoint].transform.position, Quaternion.identity);
+                var Instance = Instantiate(basicEnemy, spawnPoints[randSpawnPoint].transform.position, Quaternion.identity);
 
                 counter--;
             }

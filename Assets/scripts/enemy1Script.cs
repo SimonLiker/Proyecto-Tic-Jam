@@ -20,7 +20,12 @@ public class enemy1Script : MonoBehaviour
 
     int ratioInt;
 
-    public int enemyLife = 1;
+    public float enemyLife = 1;
+
+    public GameObject[] basicEnemy;
+
+    public bool isShooted = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +36,20 @@ public class enemy1Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        basicEnemy = GameObject.FindGameObjectsWithTag("basicEnemy");
         //Matar al enemigo
 
-        if (enemyLife <= 0)
-        {
-            Destroy(gameObject);
+        for (int i = 0; i < basicEnemy.Length; i++)
+        { 
+            if (basicEnemy[i].GetComponent<enemy1Script>().isShooted)
+            {
+                basicEnemy[i].GetComponent<enemy1Script>().enemyLife --;
+                basicEnemy[i].GetComponent<enemy1Script>().isShooted = false;
+            }
+            if (basicEnemy[i].GetComponent<enemy1Script>().enemyLife <= 0)
+            {
+                Destroy(basicEnemy[i]);
+            }
         }
 
         //Hacer que dispare
@@ -65,6 +78,14 @@ public class enemy1Script : MonoBehaviour
         else
         {
             ratio = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "playerBullet")
+        {
+            isShooted = true;
         }
     }
 }

@@ -20,7 +20,13 @@ public class enemy2Script : MonoBehaviour
 
     int ratioInt;
 
-    public int enemyLife2 = 2;
+    public float enemyLife2 = 2;
+
+    bool enemyHit = false;
+
+    public GameObject[] strongerEnemy;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +36,21 @@ public class enemy2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Matar al enemigo
+        strongerEnemy = GameObject.FindGameObjectsWithTag("enemigoMasFuerte");
 
-        if (enemyLife2 <= 0)
+        //Matar al enemigo
+        for (int i = 0; i < strongerEnemy.Length; i++)
         {
-            Destroy(gameObject);
+            if (strongerEnemy[i].GetComponent<enemy2Script>().enemyHit)
+            {
+                strongerEnemy[i].GetComponent<enemy2Script>().enemyLife2 --;
+                strongerEnemy[i].GetComponent<enemy2Script>().enemyHit = false;
+            }
+
+            if (strongerEnemy[i].GetComponent<enemy2Script>().enemyLife2 <= 0)
+            {
+                Destroy(strongerEnemy[i]);
+            }
         }
 
         //Hacer que dispare
@@ -64,6 +80,14 @@ public class enemy2Script : MonoBehaviour
         {
             ratio = 0;
         }
+ 
     
 }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "playerBullet")
+        {
+            enemyHit = true;
+        }
+    }
 }

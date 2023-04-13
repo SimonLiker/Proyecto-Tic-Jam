@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
-    enemy1Script basicEnemyShortcut;
-    enemy2Script strongerEnemyShortcut;
+    enemy1Script enemyShortcut1;
+    enemy2Script enemyShortcut2;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        basicEnemyShortcut = FindObjectOfType<enemy1Script>();
-        strongerEnemyShortcut = FindObjectOfType<enemy2Script>();
+        enemyShortcut1 = FindObjectOfType<enemy1Script>();
+        enemyShortcut2 = FindObjectOfType<enemy2Script>();
     }
 
     // Update is called once per frame
@@ -24,12 +26,12 @@ public class bulletScript : MonoBehaviour
         if (collision.gameObject.tag == "basicEnemy")
         {
             Debug.Log("Enemigo impactado");
-            basicEnemyShortcut.enemyLife--;
+            enemyShortcut1.enemyLife--;
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "enemigoMasFuerte")
         {
-            strongerEnemyShortcut.enemyLife2--;
+            
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "obstaculo")
