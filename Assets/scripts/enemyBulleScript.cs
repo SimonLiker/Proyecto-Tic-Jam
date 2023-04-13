@@ -27,6 +27,10 @@ public class enemyBulleScript : MonoBehaviour
             playerShortcut.life--;
             Destroy(gameObject);
         }
+        else if (collision.gameObject.tag == "obstaculo")
+        {
+            Destroy(gameObject);
+        }
         else
         {
             playerShortcut.isShooted = false;

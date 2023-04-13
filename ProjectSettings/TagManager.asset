@@ -6,6 +6,7 @@ TagManager:
   tags:
   - basicEnemy
   - enemigoMasFuerte
+  - obstaculo
   layers:
   - Default
   - TransparentFX
