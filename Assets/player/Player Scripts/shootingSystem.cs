@@ -61,7 +61,7 @@ public class shootingSystem : MonoBehaviour
         //hacer que dispare hacia la posición del mouse
         if (Input.GetMouseButton(0) && bulletRatio < 1.02f && bulletRatio > .98f)
         {
-            while (counter == 1)
+            while (counter > 0)
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                 var instance = Instantiate(bullet, transform.position, transform.rotation);

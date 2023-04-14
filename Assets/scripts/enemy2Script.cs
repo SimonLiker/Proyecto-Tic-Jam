@@ -10,7 +10,7 @@ public class enemy2Script : MonoBehaviour
 
     float speed = 10f;
 
-    int counter = 1;
+    int counter = 3;
 
     float range = 8f;
 
@@ -27,6 +27,8 @@ public class enemy2Script : MonoBehaviour
     public GameObject[] strongerEnemy;
 
     GameObject player;
+
+    float bulletRatio = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +72,25 @@ public class enemy2Script : MonoBehaviour
 
         if (rangeDetector.magnitude < range)
         {
-            if (ratioInt % 2 == 0)
+            if (ratio > .18f && ratio < .22f)
+            {
+                while (counter > 0)
+                {
+                    var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
+                    instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
+                    counter--;
+                }
+            }
+            else if (ratio > .38f && ratio < .42f)
+            {
+                    while (counter > 0)
+                    {
+                        var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
+                        instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
+                        counter--;
+                    }
+            }
+            else if (ratio > .58f && ratio < .62f)
             {
                 while (counter > 0)
                 {
