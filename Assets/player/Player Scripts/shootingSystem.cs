@@ -64,7 +64,7 @@ public class shootingSystem : MonoBehaviour
             while (counter == 1)
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-                var instance = Instantiate(bullet, transform.position, Quaternion.identity);
+                var instance = Instantiate(bullet, transform.position, transform.rotation);
                 instance.GetComponent<Rigidbody2D>().velocity = new Vector2 ((mousePos.x - transform.position.x) * speed, (mousePos.y - transform.position.y)* speed).normalized * speed;
                 Debug.Log(mousePos.x);
                 Debug.Log(mousePos.y);
