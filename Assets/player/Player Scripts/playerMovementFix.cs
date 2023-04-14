@@ -6,8 +6,10 @@ public class playerMovementFix : MonoBehaviour
 {
 
     shootingSystem shootingShortcut;
-
+    float energySliderValue = 0;
     float speed = 8f;
+
+    bool timeSlowed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class playerMovementFix : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+
         //Player rotation
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -47,15 +51,29 @@ public class playerMovementFix : MonoBehaviour
         if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0)
         {
             StartCoroutine(timeSlower());
+            energySliderValue = 5f;
+            if (energySliderValue > 0)
+            {
+                energySliderValue -= Time.deltaTime;
+            }
+        }
+        else if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0 && timeSlowed)
+        {
+            StopCoroutine(timeSlower());
+            timeSlowed = false;
         }
     } 
 
+    //Hacer el tiempo más lento
     IEnumerator timeSlower()
     {
         Time.timeScale = 0.5f;
         speed = 16f;
+        timeSlowed = true;
         yield return new WaitForSeconds(5f);
+        timeSlowed = false;
         Time.timeScale = 1f;
         speed = 2f;
+        shootingShortcut.life--;
     }
 }
