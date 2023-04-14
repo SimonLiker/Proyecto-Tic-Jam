@@ -16,6 +16,12 @@ public class shootingSystem : MonoBehaviour
 
     Vector3 mousePos;
 
+    public GameObject pantallaMuerte;
+
+    public GameObject textMuerte;
+
+    public GameObject botonMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +42,10 @@ public class shootingSystem : MonoBehaviour
         if (life <= 0)
         {
             Destroy(gameObject);
+
+            textMuerte.SetActive(true);
+            pantallaMuerte.SetActive(true);
+            botonMenu.SetActive(true);
             Time.timeScale = 0f;
         }
 
