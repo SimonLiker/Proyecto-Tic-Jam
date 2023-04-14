@@ -8,11 +8,11 @@ public class enemy2Script : MonoBehaviour
 
     Vector3 playerPos;
 
-    float speed = 75f;
+    float speed = 10f;
 
     int counter = 1;
 
-    float range = 2f;
+    float range = 8f;
 
     Vector3 rangeDetector;
 

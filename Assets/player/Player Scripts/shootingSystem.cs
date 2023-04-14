@@ -8,7 +8,7 @@ public class shootingSystem : MonoBehaviour
 
     int counter = 1;
 
-    float speed = 10f;
+    float speed = 20f;
 
     public int life = 3;
 

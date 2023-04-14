@@ -12,7 +12,7 @@ public class enemy1Script : MonoBehaviour
 
     int counter = 1;
 
-    float range = 2f;
+    float range = 8f;
 
     Vector3 rangeDetector;
 

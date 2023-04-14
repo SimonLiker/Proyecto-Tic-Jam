@@ -9,6 +9,9 @@ public class playerMovementFix : MonoBehaviour
     float energySliderValue = 0;
     float speed = 8f;
 
+    int counter = 1;
+    int counter2 = 1;
+
     bool timeSlowed = false;
     // Start is called before the first frame update
     void Start()
@@ -50,30 +53,49 @@ public class playerMovementFix : MonoBehaviour
 
         if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0)
         {
-            StartCoroutine(timeSlower());
+            while (counter > 0)
+            {
+                StartCoroutine(timeSlower());
+                counter--;
+            }
+            
             energySliderValue = 5f;
             if (energySliderValue > 0)
             {
                 energySliderValue -= Time.deltaTime;
             }
         }
-        else if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0 && timeSlowed)
+        else if (Input.GetKey(KeyCode.G) && shootingShortcut.life > 0 && timeSlowed)
         {
             StopCoroutine(timeSlower());
             timeSlowed = false;
+            speed = 8f;
+            Time.timeScale = 1f;
+            Debug.Log("Coroutine cancelada");
+        }
+        else
+        {
+            counter++;
+            counter2++;
         }
     } 
 
-    //Hacer el tiempo más lento
+    //Coroutine para hacer el tiempo más lento
     IEnumerator timeSlower()
     {
+        Debug.Log("Timescale = 0.5");
         Time.timeScale = 0.5f;
         speed = 16f;
         timeSlowed = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("Timescale = 1");
         timeSlowed = false;
         Time.timeScale = 1f;
-        speed = 2f;
-        shootingShortcut.life--;
+        speed = 8f;
+        while (counter2 > 0)
+        {
+            //shootingShortcut.life--;
+            counter2--;
+        }
     }
 }
