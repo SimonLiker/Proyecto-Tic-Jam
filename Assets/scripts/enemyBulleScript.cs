@@ -22,10 +22,11 @@ public class enemyBulleScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerShortcut.isShooted = true;
+            StartCoroutine(colorDelay());
             Debug.Log("jugador impactado");
             playerShortcut.life--;
             Destroy(gameObject);
+
         }
         else if (collision.gameObject.tag == "obstaculo")
         {
@@ -35,5 +36,13 @@ public class enemyBulleScript : MonoBehaviour
         {
             playerShortcut.isShooted = false;
         }
+    }
+    IEnumerator colorDelay()
+    {
+        playerShortcut.isShooted = true;
+
+        yield return new WaitForSeconds(Time.deltaTime);
+
+        playerShortcut.isShooted = false;
     }
 }

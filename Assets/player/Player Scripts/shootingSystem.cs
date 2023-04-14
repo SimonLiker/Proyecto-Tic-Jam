@@ -8,6 +8,8 @@ public class shootingSystem : MonoBehaviour
 
     int counter = 1;
 
+    int counter2 = 1;
+
     float speed = 20f;
 
     public int life = 3;
@@ -38,13 +40,20 @@ public class shootingSystem : MonoBehaviour
             bulletRatio += Time.deltaTime;
         }
 
-        Debug.Log(bulletRatio);
 
         //Si es disparado
 
         if (isShooted)
         {
-            StartCoroutine(colorChange());
+            while (counter2 > 0)
+            {
+                StartCoroutine(colorChange());
+                counter2--;
+            }
+        }
+        else
+        {
+            counter2 = 1;
         }
 
         //muerte

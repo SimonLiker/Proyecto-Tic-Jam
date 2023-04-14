@@ -51,7 +51,7 @@ public class playerMovementFix : MonoBehaviour
 
         //Slowing time down
 
-        if (Input.GetKey(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false)
+        if (Input.GetKeyDown(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false)
         {
             while (counter > 0)
             {
@@ -65,7 +65,7 @@ public class playerMovementFix : MonoBehaviour
                 energySliderValue -= Time.deltaTime;
             }
         }
-        else if (Input.GetKey(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed)
+        else if (Input.GetKeyDown(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed)
         {
             StopCoroutine(timeSlower());
             timeSlowed = false;
@@ -75,7 +75,7 @@ public class playerMovementFix : MonoBehaviour
         }
         else
         {
-            counter++;
+            counter = 1;
             counter2++;
         }
     } 
@@ -86,7 +86,9 @@ public class playerMovementFix : MonoBehaviour
         Debug.Log("Timescale = 0.5");
         Time.timeScale = 0.5f;
         speed = 16f;
+
         timeSlowed = true;
+
         yield return new WaitForSeconds(2.5f);
         Debug.Log("Timescale = 1");
         timeSlowed = false;
