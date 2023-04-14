@@ -22,6 +22,8 @@ public class shootingSystem : MonoBehaviour
 
     public GameObject botonMenu;
 
+    float bulletRatio = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,13 @@ public class shootingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bulletRatio < 1f)
+        {
+            bulletRatio += Time.deltaTime;
+        }
+
+        Debug.Log(bulletRatio);
+
         //Si es disparado
 
         if (isShooted)
@@ -50,7 +59,7 @@ public class shootingSystem : MonoBehaviour
         }
 
         //hacer que dispare hacia la posición del mouse
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && bulletRatio < 1.02f && bulletRatio > .98f)
         {
             while (counter == 1)
             {
@@ -59,6 +68,7 @@ public class shootingSystem : MonoBehaviour
                 instance.GetComponent<Rigidbody2D>().velocity = new Vector2 ((mousePos.x - transform.position.x) * speed, (mousePos.y - transform.position.y)* speed).normalized * speed;
                 Debug.Log(mousePos.x);
                 Debug.Log(mousePos.y);
+                bulletRatio = 0;
                 counter--;
             }
 

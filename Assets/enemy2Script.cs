@@ -26,7 +26,7 @@ public class enemy2Script : MonoBehaviour
 
     public GameObject[] strongerEnemy;
 
-
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +36,15 @@ public class enemy2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        //Rotación respecto al jugador
+
+        Vector3 playerPos = player.transform.position;
+        Vector3 direction = playerPos - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         strongerEnemy = GameObject.FindGameObjectsWithTag("enemigoMasFuerte");
 
         //Matar al enemigo

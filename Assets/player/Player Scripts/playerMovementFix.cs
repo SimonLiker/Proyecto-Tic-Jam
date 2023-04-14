@@ -51,7 +51,7 @@ public class playerMovementFix : MonoBehaviour
 
         //Slowing time down
 
-        if (Input.GetKey(KeyCode.T) && shootingShortcut.life > 0)
+        if (Input.GetKey(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false)
         {
             while (counter > 0)
             {
@@ -65,7 +65,7 @@ public class playerMovementFix : MonoBehaviour
                 energySliderValue -= Time.deltaTime;
             }
         }
-        else if (Input.GetKey(KeyCode.G) && shootingShortcut.life > 0 && timeSlowed)
+        else if (Input.GetKey(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed)
         {
             StopCoroutine(timeSlower());
             timeSlowed = false;
