@@ -79,6 +79,7 @@ public class jefeScript : MonoBehaviour
             {
                 while (counter > 0)
                 {
+                    soundManager.PlaySound("disparoBoss");
                     var instance = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                     instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
 

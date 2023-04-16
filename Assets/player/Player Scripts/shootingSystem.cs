@@ -75,6 +75,7 @@ public class shootingSystem : MonoBehaviour
         {
             while (counter > 0)
             {
+                soundManager.PlaySound("disparo");
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                 var instance = Instantiate(bullet, transform.position, transform.rotation);
                 instance.GetComponent<Rigidbody2D>().velocity = new Vector2 ((mousePos.x - transform.position.x) * speed, (mousePos.y - transform.position.y)* speed).normalized * speed;
