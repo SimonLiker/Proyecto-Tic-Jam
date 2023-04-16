@@ -60,6 +60,7 @@ public class enemy2Script : MonoBehaviour
 
             if (strongerEnemy[i].GetComponent<enemy2Script>().enemyLife2 <= 0)
             {
+                strongerEnemy[i].GetComponent<lootBag>().InstantiateLoot(strongerEnemy[i].transform.position);
                 Destroy(strongerEnemy[i]);
             }
         }
