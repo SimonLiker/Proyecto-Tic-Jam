@@ -37,5 +37,9 @@ public class bulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (collision.gameObject.tag == "jefe")
+        {
+            Destroy(gameObject);
+        }
     }
 }

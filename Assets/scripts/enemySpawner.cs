@@ -24,6 +24,12 @@ public class enemySpawner : MonoBehaviour
 
     int randSpawnPoint2;
 
+    public GameObject jefe;
+
+    int counter4 = 1;
+
+    int randSpawnPoint3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +79,6 @@ public class enemySpawner : MonoBehaviour
         {
             while (counter3 > 0)
             {
-                Debug.Log("Enemigo fuerte iniciado");
 
                 randSpawnPoint2 = Random.Range(0, spawnPoints.Length);
 
@@ -86,6 +91,25 @@ public class enemySpawner : MonoBehaviour
         else
         {
             counter3 = 1;
+        }
+
+        //jefe
+
+        if (timeInt > 0 && timeInt % 60 == 0)
+        {
+            while (counter4 > 0)
+            {
+                randSpawnPoint3 = Random.Range(0, spawnPoints.Length);
+
+                Instantiate(jefe, spawnPoints[randSpawnPoint2].transform.position, Quaternion.identity);
+
+                counter4--;
+            }
+
+        }
+        else
+        {
+            counter4 = 1;
         }
     }
 }

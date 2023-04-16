@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy2Script : MonoBehaviour
+public class jefeScript : MonoBehaviour
 {
     public GameObject enemyBullet;
 
     Vector3 playerPos;
 
-    float speed = 10f;
+    float speed = 20f;
 
     int counter = 3;
 
-    float range = 8f;
+    float range = 10f;
 
     Vector3 rangeDetector;
 
@@ -20,15 +20,13 @@ public class enemy2Script : MonoBehaviour
 
     int ratioInt;
 
-    public float enemyLife2 = 2;
+    public float enemyLife3 = 10f;
 
     bool enemyHit = false;
 
-    public GameObject[] strongerEnemy;
-
     GameObject player;
 
-    float bulletRatio = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,26 +45,21 @@ public class enemy2Script : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        strongerEnemy = GameObject.FindGameObjectsWithTag("enemigoMasFuerte");
+        //Matar al jefe
 
-        //Matar al enemigo
-        for (int i = 0; i < strongerEnemy.Length; i++)
+        if (enemyHit)
         {
-            if (strongerEnemy[i].GetComponent<enemy2Script>().enemyHit)
-            {
-                strongerEnemy[i].GetComponent<enemy2Script>().enemyLife2 --;
-                strongerEnemy[i].GetComponent<enemy2Script>().enemyHit = false;
-            }
-
-            if (strongerEnemy[i].GetComponent<enemy2Script>().enemyLife2 <= 0)
-            {
-                Destroy(strongerEnemy[i]);
-            }
+            enemyLife3--;
+            enemyHit = false;
         }
 
-        //Hacer que dispare
+        if (enemyLife3 <= 0)
+        {
+            Destroy(gameObject);
+        }
 
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        //Disparos del jefe
+
         rangeDetector = (transform.position - playerPos);
         ratioInt = Mathf.RoundToInt(ratio);
 
@@ -76,25 +69,37 @@ public class enemy2Script : MonoBehaviour
             {
                 while (counter > 0)
                 {
-                    var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
+                    var instance = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                     instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
+                    
                     counter--;
                 }
             }
             else if (ratio > .38f && ratio < .42f)
             {
-                    while (counter > 0)
-                    {
-                        var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
-                        instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
-                        counter--;
-                    }
+                while (counter > 0)
+                {
+                    var instance = Instantiate(enemyBullet, transform.position, Quaternion.identity);
+                    instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
+
+                    counter--;
+
+                }
             }
-            else if (ratio > .58f && ratio < .62f)
+            else if (ratio > .88f && ratio < .92f)
             {
                 while (counter > 0)
                 {
-                    var instance = Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
+                    var instance = Instantiate(enemyBullet, transform.position, Quaternion.identity);
+                    instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
+                    counter--;
+                }
+            }
+            else if (ratio > .88f + .20f && ratio < .92f + 20f)
+            {
+                while (counter > 0)
+                {
+                    var instance = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                     instance.GetComponent<Rigidbody2D>().velocity = new Vector2((playerPos.x - transform.position.x) * speed, (playerPos.y - transform.position.y) * speed).normalized * speed;
                     counter--;
                 }
@@ -103,21 +108,19 @@ public class enemy2Script : MonoBehaviour
             {
                 counter = 1;
             }
+            ratio += (Time.deltaTime * 1.4f);
 
-            if (ratio > 1.5f)
+            if (ratio > 2f)
             {
                 ratio = 0;
             }
-            ratio += (Time.deltaTime * 1.4f);
-
         }
         else
         {
             ratio = 0;
         }
- 
-    
-}
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "playerBullet")

@@ -26,6 +26,8 @@ public class shootingSystem : MonoBehaviour
 
     float bulletRatio = 0;
 
+    public GameObject tiempoText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,7 @@ public class shootingSystem : MonoBehaviour
             textMuerte.SetActive(true);
             pantallaMuerte.SetActive(true);
             botonMenu.SetActive(true);
+            tiempoText.SetActive(true);
             Time.timeScale = 0f;
         }
 

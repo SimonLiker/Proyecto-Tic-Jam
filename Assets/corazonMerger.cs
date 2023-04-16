@@ -10,7 +10,7 @@ public class corazonMerger : MonoBehaviour
 
     public GameObject[] corazones;
     
-    float ultimoCorazonPos = -181f;
+    float ultimoCorazonPos = -10f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class corazonMerger : MonoBehaviour
     public void quitarCorazon()
     {
         Destroy(corazones[corazones.Length - 1]);
-        ultimoCorazonPos += 63;
+        ultimoCorazonPos += 55;
     }
 
     public void añadirCorazon()
@@ -35,7 +35,7 @@ public class corazonMerger : MonoBehaviour
         Debug.Log("corazonAñadido");
         var instance = Instantiate(corazon);
         instance.transform.parent = canvas.transform;
-        instance.GetComponent<RectTransform>().localPosition = new Vector2(ultimoCorazonPos, 213f);
-        ultimoCorazonPos-= 63;
+        instance.GetComponent<RectTransform>().localPosition = new Vector2(ultimoCorazonPos, 189f);
+        ultimoCorazonPos-= 55;
     }
 }

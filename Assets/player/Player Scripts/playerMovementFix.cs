@@ -97,6 +97,7 @@ public class playerMovementFix : MonoBehaviour
         Debug.Log("Timescale = 1");
         timeSlowed = false;
         Time.timeScale = 1f;
+        pantallaSlowed.SetActive(false);
         speed = 8f;
         while (counter2 > 0)
         {
