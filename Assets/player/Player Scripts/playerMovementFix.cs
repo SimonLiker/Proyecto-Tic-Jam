@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMovementFix : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class playerMovementFix : MonoBehaviour
     float energySliderValue = 0;
     float speed = 8f;
 
+    public Slider energySlider;
+
     int counter = 1;
     int counter2 = 1;
+
+    public float timeSlider = 0;
 
     public GameObject pantallaSlowed;
 
@@ -24,7 +29,6 @@ public class playerMovementFix : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
 
         //Player rotation
 
@@ -52,11 +56,25 @@ public class playerMovementFix : MonoBehaviour
         }
 
         //Slowing time down
+        if (timeSlowed)
+        {
+            if (timeSlider > 0)
+            {
+                timeSlider -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            timeSlider = 0;
+        }
+
+        energySlider.value = timeSlider;
 
         if (Input.GetKeyDown(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false)
         {
             while (counter > 0)
             {
+                timeSlider = 2.5f;
                 StartCoroutine(timeSlower());
                 counter--;
             }
@@ -90,7 +108,6 @@ public class playerMovementFix : MonoBehaviour
         pantallaSlowed.SetActive(true);
         Time.timeScale = 0.5f;
         speed = 16f;
-
         timeSlowed = true;
 
         yield return new WaitForSeconds(2.5f);

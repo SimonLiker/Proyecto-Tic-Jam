@@ -25,7 +25,6 @@ public class bulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "basicEnemy")
         {
-            Debug.Log("Enemigo impactado");
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "enemigoMasFuerte")

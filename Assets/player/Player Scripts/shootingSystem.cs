@@ -10,6 +10,8 @@ public class shootingSystem : MonoBehaviour
 
     int counter2 = 1;
 
+    int counter3 = 1;
+
     float speed = 20f;
 
     public int life = 3;
@@ -28,20 +30,50 @@ public class shootingSystem : MonoBehaviour
 
     public GameObject tiempoText;
 
+    timeCounter timeShortcut;
+
+    public Sprite newGunSprite;
+
+    bool newGun = false;
+
+    float counterMinValue = .98f;
+    float counterMaxValue = 1.02f;
+
+    float bulletRatioMaxValue = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeShortcut = FindObjectOfType<timeCounter>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bulletRatio < 1f)
+
+        Debug.Log(bulletRatio);
+        if (bulletRatio < bulletRatioMaxValue)
         {
             bulletRatio += Time.deltaTime;
         }
 
+        if (timeShortcut.timeInt == 10)
+        {
+            newGun = true;
+        }
+
+        if (newGun)
+        {
+            GetComponent<SpriteRenderer>().sprite = newGunSprite;
+            counterMinValue = .45f;
+            counterMaxValue = .55f;
+            bulletRatioMaxValue = 0.50f;
+            while (counter3 > 0)
+            {
+                bulletRatio = .5f;
+                counter3--;
+            }
+        }
 
         //Si es disparado
 
@@ -71,7 +103,7 @@ public class shootingSystem : MonoBehaviour
         }
 
         //hacer que dispare hacia la posición del mouse
-        if (Input.GetMouseButton(0) && bulletRatio < 1.02f && bulletRatio > .98f)
+        if (Input.GetMouseButton(0) && bulletRatio < counterMaxValue && bulletRatio > counterMinValue)
         {
             while (counter > 0)
             {
@@ -79,8 +111,6 @@ public class shootingSystem : MonoBehaviour
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                 var instance = Instantiate(bullet, transform.position, transform.rotation);
                 instance.GetComponent<Rigidbody2D>().velocity = new Vector2 ((mousePos.x - transform.position.x) * speed, (mousePos.y - transform.position.y)* speed).normalized * speed;
-                Debug.Log(mousePos.x);
-                Debug.Log(mousePos.y);
                 bulletRatio = 0;
                 counter--;
             }

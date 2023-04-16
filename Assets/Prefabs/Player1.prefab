@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1284307899474073297}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 19433d2ae4ff1d54c8e6ab2beea1dcf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.24343777, y: -0.40572786}
+  m_Offset: {x: -0.24343777, y: 0.06609249}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.466094, y: 5.844203}
+  m_Size: {x: 5.466094, y: 5.739354}
   m_EdgeRadius: 0
 --- !u!50 &1284307899474073308
 Rigidbody2D:
@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b73dc34e338f24e829bb618c9b90ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energySlider: {fileID: 0}
+  timeSlider: 0
+  pantallaSlowed: {fileID: 0}
 --- !u!114 &1284307899474073298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,12 +163,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afdde75f91b9ca47a96c8f182426c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5733748732491537878, guid: 09ba63c86bafb6f4aa292e6d21933687, type: 3}
+  bullet: {fileID: 5118474612290146026, guid: dd71976f2aef1794392f219eb1926825, type: 3}
   life: 3
   isShooted: 0
   pantallaMuerte: {fileID: 0}
   textMuerte: {fileID: 0}
   botonMenu: {fileID: 0}
+  tiempoText: {fileID: 0}
+  newGunSprite: {fileID: 21300000, guid: b0e87e53911c4b649be93c4074de173d, type: 3}
 --- !u!114 &1284307899474073297
 MonoBehaviour:
   m_ObjectHideFlags: 0

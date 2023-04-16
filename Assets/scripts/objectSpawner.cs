@@ -7,7 +7,6 @@ public class objectSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     float time = 0;
     int timeInt = 0;
-    public GameObject newWeapon;
     int randSpawnPoint;
     int counter = 1;
     // Start is called before the first frame update
@@ -27,8 +26,6 @@ public class objectSpawner : MonoBehaviour
             while (counter > 0)
             {
                 randSpawnPoint = Random.Range(0, spawnPoints.Length);
-
-                Instantiate(newWeapon, spawnPoints[randSpawnPoint].transform.position, Quaternion.identity);
 
                 counter--;
             }
