@@ -6,10 +6,13 @@ public class enemyBulleScript : MonoBehaviour
 {
 
     shootingSystem playerShortcut;
+
+    corazonMerger corazonShortcut;
     // Start is called before the first frame update
     void Start()
     {
         playerShortcut = FindObjectOfType<shootingSystem>();
+        corazonShortcut = FindObjectOfType<corazonMerger>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class enemyBulleScript : MonoBehaviour
             StartCoroutine(colorDelay());
             Debug.Log("jugador impactado");
             playerShortcut.life--;
+            corazonShortcut.quitarCorazon();
             Destroy(gameObject);
 
         }
