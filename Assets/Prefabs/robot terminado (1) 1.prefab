@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3726790179284924972}
   - component: {fileID: 3726790179284924975}
   - component: {fileID: 3726790179284924974}
-  - component: {fileID: -4215955605846934028}
   m_Layer: 6
   m_Name: robot terminado (1) 1
   m_TagString: basicEnemy
@@ -188,18 +187,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   agent: {fileID: 3726790179284924972}
---- !u!114 &-4215955605846934028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3726790179284924969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41c691097f13ce4b825288aab1d2973, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 5105334151115385286, guid: 413957596aa82b249adf5153d98d1f99, type: 3}
-  lootList:
-  - {fileID: 11400000, guid: 126e40304c4d8064db8771f5f5b0fa86, type: 2}
