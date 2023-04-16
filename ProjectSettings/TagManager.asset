@@ -7,6 +7,9 @@ TagManager:
   - basicEnemy
   - enemigoMasFuerte
   - obstaculo
+  - playerBullet
+  - corazon
+  - jefe
   layers:
   - Default
   - TransparentFX
