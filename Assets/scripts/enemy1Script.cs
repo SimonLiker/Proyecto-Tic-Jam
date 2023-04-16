@@ -53,12 +53,15 @@ public class enemy1Script : MonoBehaviour
             if (basicEnemy[i].GetComponent<enemy1Script>().isShooted)
             {
                 basicEnemy[i].GetComponent<enemy1Script>().enemyLife--;
+                basicEnemy[i].GetComponent<lootBag>().InstantiateLoot(basicEnemy[i].transform.position);
                 basicEnemy[i].GetComponent<enemy1Script>().isShooted = false;
             }
             if (basicEnemy[i].GetComponent<enemy1Script>().enemyLife <= 0)
             {
                 Destroy(basicEnemy[i]);
+
             }
+          
         }
 
         //Hacer que dispare
