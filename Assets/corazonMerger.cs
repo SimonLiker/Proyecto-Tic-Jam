@@ -27,7 +27,7 @@ public class corazonMerger : MonoBehaviour
     public void quitarCorazon()
     {
         Destroy(corazones[corazones.Length - 1]);
-        ultimoCorazonPos += 55;
+        ultimoCorazonPos -= 55f;
     }
 
     public void añadirCorazon()
@@ -36,6 +36,6 @@ public class corazonMerger : MonoBehaviour
         var instance = Instantiate(corazon);
         instance.transform.parent = canvas.transform;
         instance.GetComponent<RectTransform>().localPosition = new Vector2(ultimoCorazonPos, 189f);
-        ultimoCorazonPos-= 55;
+        ultimoCorazonPos += 55;
     }
 }
