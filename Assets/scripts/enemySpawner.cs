@@ -75,7 +75,7 @@ public class enemySpawner : MonoBehaviour
 
         //segundo enemigo
 
-        if (timeInt > 0 && timeInt % 3 == 0)
+        if (timeInt > 30 && timeInt % 5 == 0)
         {
             while (counter3 > 0)
             {

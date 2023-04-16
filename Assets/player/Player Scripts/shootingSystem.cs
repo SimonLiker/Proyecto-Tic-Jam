@@ -57,7 +57,7 @@ public class shootingSystem : MonoBehaviour
             bulletRatio += Time.deltaTime;
         }
 
-        if (timeShortcut.timeInt == 10)
+        if (timeShortcut.timeInt == 60)
         {
             newGun = true;
         }
