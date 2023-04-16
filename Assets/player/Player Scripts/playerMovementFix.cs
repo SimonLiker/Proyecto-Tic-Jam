@@ -12,6 +12,8 @@ public class playerMovementFix : MonoBehaviour
     int counter = 1;
     int counter2 = 1;
 
+    public GameObject pantallaSlowed;
+
     bool timeSlowed = false;
     // Start is called before the first frame update
     void Start()
@@ -69,6 +71,7 @@ public class playerMovementFix : MonoBehaviour
         {
             StopCoroutine(timeSlower());
             timeSlowed = false;
+            pantallaSlowed.SetActive(false);
             speed = 8f;
             Time.timeScale = 1f;
             Debug.Log("Coroutine cancelada");
@@ -84,6 +87,7 @@ public class playerMovementFix : MonoBehaviour
     IEnumerator timeSlower()
     {
         Debug.Log("Timescale = 0.5");
+        pantallaSlowed.SetActive(true);
         Time.timeScale = 0.5f;
         speed = 16f;
 
