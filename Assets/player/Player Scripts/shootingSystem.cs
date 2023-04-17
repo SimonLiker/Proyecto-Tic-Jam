@@ -37,7 +37,7 @@ public class shootingSystem : MonoBehaviour
     bool newGun = false;
 
     float counterMinValue = .98f;
-    float counterMaxValue = 1.02f;
+    float counterMaxValue = 1.1f;
 
     float bulletRatioMaxValue = 1f;
 
@@ -66,7 +66,7 @@ public class shootingSystem : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = newGunSprite;
             counterMinValue = .45f;
-            counterMaxValue = .55f;
+            counterMaxValue = .6f;
             bulletRatioMaxValue = 0.50f;
             while (counter3 > 0)
             {

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class playerMovementFix : MonoBehaviour
-{
-
+{ 
     shootingSystem shootingShortcut;
     float energySliderValue = 0;
     float speed = 8f;
@@ -15,7 +14,7 @@ public class playerMovementFix : MonoBehaviour
     int counter = 1;
     int counter2 = 1;
 
-    public float timeSlider = 0;
+    public float timeSlider;
 
     public GameObject pantallaSlowed;
 
@@ -24,11 +23,12 @@ public class playerMovementFix : MonoBehaviour
     void Start()
     {
         shootingShortcut = FindObjectOfType<shootingSystem>();
+        timeSlider = energySlider.maxValue;
     }
-
     // Update is called once per frame
     void Update()
     {
+        energySlider.value = timeSlider;
 
         //Player rotation
 
@@ -65,16 +65,16 @@ public class playerMovementFix : MonoBehaviour
         }
         else
         {
-            timeSlider = 0;
+            if (timeSlider < 2.5f)
+            {
+                timeSlider += Time.deltaTime*.25f;
+            }
         }
 
-        energySlider.value = timeSlider;
-
-        if (Input.GetKeyDown(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false)
+        if (Input.GetKeyDown(KeyCode.Space) && shootingShortcut.life > 0 && timeSlowed == false && timeSlider >= energySlider.maxValue)
         {
             while (counter > 0)
             {
-                timeSlider = 2.5f;
                 StartCoroutine(timeSlower());
                 counter--;
             }

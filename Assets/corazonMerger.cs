@@ -12,10 +12,14 @@ public class corazonMerger : MonoBehaviour
     
     float ultimoCorazonPos = -10f;
 
+    float corazonPosY = 0;
+
+    int counter = 1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -35,7 +39,8 @@ public class corazonMerger : MonoBehaviour
         Debug.Log("corazonAñadido");
         var instance = Instantiate(corazon);
         instance.transform.parent = canvas.transform;
-        instance.GetComponent<RectTransform>().localPosition = new Vector2(ultimoCorazonPos, 189f);
+        instance.GetComponent<RectTransform>().localPosition = new Vector2(ultimoCorazonPos, corazones[1].GetComponent<RectTransform>().anchoredPosition.y);
+        instance.GetComponent<RectTransform>().localScale = corazones[1].GetComponent<RectTransform>().localScale;
         ultimoCorazonPos += 55;
     }
 }
